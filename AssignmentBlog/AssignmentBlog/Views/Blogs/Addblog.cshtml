@@ -1,0 +1,66 @@
+﻿
+@model AssignmentBlog.Models.Blog
+
+<br />
+<h2 class="text-info">Create Blog</h2>
+<br />
+
+<div class="border container" style="padding:30px;">
+    <form method="post">
+        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+        @if (Model.ID != 0)
+        {
+    <input type="hidden" asp-for="ID" />}
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="BlogName"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="BlogName" class="form-control" />
+                <span asp-validation-for="BlogName" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="PublishedDate"></label>
+            </div>
+            <div class="col-6">
+                <input data-provide="datepicker" asp-for="PublishedDate" class="form-control" />
+                <span asp-validation-for="PublishedDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="CreatedDate"></label>
+            </div>
+            <div class="col-6">
+                <input data-provide="datepicker" asp-for="CreatedDate" class="form-control" />
+                <span asp-validation-for="CreatedDate" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3">
+                <label asp-for="Author"></label>
+            </div>
+            <div class="col-6">
+                <input asp-for="Author" class="form-control" />
+                <span asp-validation-for="Author" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-3 offset-3">
+                <button type="submit" class="btn btn-primary form-control">
+                    @(Model.ID != 0 ? "Update" : "Create")
+                </button>
+            </div>
+            <div class="col-3">
+                <a asp-action="Index" class="btn btn-success form-control">Back to List</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}
+
